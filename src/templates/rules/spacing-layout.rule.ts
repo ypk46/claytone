@@ -1,7 +1,7 @@
 import type { ProjectConfig } from '../../types/index.js';
 
-export function spacingLayoutRule(_config: ProjectConfig): string {
-  return `# Spacing and Layout Rules
+export function spacingLayoutRule(_config: ProjectConfig, augmentation?: string): string {
+  const base = `# Spacing and Layout Rules
 
 ## Spacing
 
@@ -47,4 +47,5 @@ All spacing values **must** derive from the design token spacing scale.
 - Mix spacing scales (combining 4px and 8px base grids)
 - Use negative margins for layout — use flex \`gap\` or \`grid-gap\` instead
 `;
+  return augmentation ? `${base}\n${augmentation}` : base;
 }

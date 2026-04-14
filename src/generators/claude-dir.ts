@@ -1,4 +1,5 @@
 import type { ProjectConfig } from "../types/index.js";
+import { getPreset } from "../presets/index.js";
 import { designTokensRule } from "../templates/rules/design-tokens.rule.js";
 import { componentNamingRule } from "../templates/rules/component-naming.rule.js";
 import { spacingLayoutRule } from "../templates/rules/spacing-layout.rule.js";
@@ -17,9 +18,21 @@ async function write(path: string, content: string): Promise<void> {
 }
 
 export async function generateClaudeDir(config: ProjectConfig): Promise<void> {
-  await write(".claude/rules/design-tokens.md", designTokensRule(config));
-  await write(".claude/rules/component-naming.md", componentNamingRule(config));
-  await write(".claude/rules/spacing-layout.md", spacingLayoutRule(config));
+  const preset =
+    config.designPreset !== "none" ? getPreset(config.designPreset) : undefined;
+
+  await write(
+    ".claude/rules/design-tokens.md",
+    designTokensRule(config, preset?.ruleAugmentations["design-tokens"]),
+  );
+  await write(
+    ".claude/rules/component-naming.md",
+    componentNamingRule(config, preset?.ruleAugmentations["component-naming"]),
+  );
+  await write(
+    ".claude/rules/spacing-layout.md",
+    spacingLayoutRule(config, preset?.ruleAugmentations["spacing-layout"]),
+  );
 
   if (config.useMemoryFiles) {
     await write(

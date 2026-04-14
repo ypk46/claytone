@@ -8,8 +8,8 @@ const tokenFileMap: Record<ProjectConfig["tokenFormat"], string> = {
   json: "`tokens.json` — load at runtime or via build step",
 };
 
-export function designTokensRule(config: ProjectConfig): string {
-  return `# Design Token Rules
+export function designTokensRule(config: ProjectConfig, augmentation?: string): string {
+  const base = `# Design Token Rules
 
 ## Authority
 
@@ -49,4 +49,5 @@ ${tokenFileMap[config.tokenFormat]}
 4. Note the addition in \`.claude/memory/design-decisions.md\` if it represents
    a new design decision
 `;
+  return augmentation ? `${base}\n${augmentation}` : base;
 }

@@ -1,4 +1,4 @@
-import type { ProjectConfig } from '../types/index.js';
+import type { ProjectConfig, PresetDefinition } from '../types/index.js';
 
 const tokenFileRef: Record<NonNullable<ProjectConfig['tokenFormat']>, string> = {
   'css-vars':  '`src/styles/tokens.css`',
@@ -14,7 +14,9 @@ const designSystemLabel: Record<NonNullable<ProjectConfig['designSystemType']>, 
   tailwind: 'Tailwind CSS',
 };
 
-export function claudeMdTemplate(config: ProjectConfig): string {
+export function claudeMdTemplate(config: ProjectConfig, preset?: PresetDefinition): string {
+  const presetBlock = preset ? `\n${preset.claudeMdSection}\n` : '';
+
   return `# ${config.projectName} — Design Engine
 
 This file governs how Claude Code contributes to **${config.projectName}**.
@@ -24,6 +26,7 @@ This file governs how Claude Code contributes to **${config.projectName}**.
 This project uses ${designSystemLabel[config.designSystemType]}. Always work within the
 established system boundaries — do not introduce external UI libraries or override
 design system primitives.
+${presetBlock}
 
 ## Before Making UI or Styling Changes
 

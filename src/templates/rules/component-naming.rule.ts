@@ -1,7 +1,7 @@
 import type { ProjectConfig } from '../../types/index.js';
 
-export function componentNamingRule(_config: ProjectConfig): string {
-  return `# Component Naming Conventions
+export function componentNamingRule(_config: ProjectConfig, augmentation?: string): string {
+  const base = `# Component Naming Conventions
 
 ## File Naming
 
@@ -59,4 +59,5 @@ src/components/
 - Name components after their implementation detail (e.g. \`FlexRow\`, \`RedButton\`)
 - Export components directly from \`src/components/index.ts\` without a subdirectory
 `;
+  return augmentation ? `${base}\n${augmentation}` : base;
 }

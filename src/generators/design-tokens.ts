@@ -1,4 +1,5 @@
 import type { ProjectConfig } from '../types/index.js';
+import { getPreset } from '../presets/index.js';
 import { writeFile } from '../utils/fs.js';
 import { logCreated, logSkipped } from '../utils/logger.js';
 
@@ -173,8 +174,10 @@ const tokenFileMap: Record<ProjectConfig['tokenFormat'], { path: string; content
 };
 
 export async function generateDesignTokens(config: ProjectConfig): Promise<void> {
+  const preset = config.designPreset !== 'none' ? getPreset(config.designPreset) : undefined;
   const { path, content } = tokenFileMap[config.tokenFormat];
-  const written = await writeFile(path, content());
+  const tokenContent = preset ? preset.tokens[config.tokenFormat] : content();
+  const written = await writeFile(path, tokenContent);
   if (written) {
     logCreated(path);
   } else {
