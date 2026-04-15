@@ -25,7 +25,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yuyik46/claytone.git"
+    "url": "git+https://github.com/ypk46/claytone.git"
   },
   "keywords": [
     "design",
@@ -34,7 +34,7 @@
     "ai",
     "scaffold"
   ],
-  "homepage": "https://github.com/yuyik46/claytone#readme",
+  "homepage": "https://github.com/ypk46/claytone#readme",
   "dependencies": {
     "@clack/prompts": "^0.9.0",
     "commander": "^12.0.0"
