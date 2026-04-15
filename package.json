@@ -15,13 +15,32 @@
     "start": "node dist/cli.js",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write \"src/**/*.{ts,js,json,md}\"",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "release": "npm run build && npm publish"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuyik46/claytone.git"
+  },
+  "keywords": [
+    "design",
+    "tokens",
+    "cli",
+    "ai",
+    "scaffold"
+  ],
+  "homepage": "https://github.com/yuyik46/claytone#readme",
   "dependencies": {
     "@clack/prompts": "^0.9.0",
     "commander": "^12.0.0"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.30.0",
     "@types/node": "^25.6.0",
     "prettier": "^3.8.3",
     "tsup": "^8.0.0",
