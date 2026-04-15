@@ -2,7 +2,7 @@
   "name": "claytone",
   "version": "0.1.0",
   "description": "Design engine scaffolder for AI coding assistants.",
-  "license": "ISC",
+  "license": "MIT",
   "author": "Yuyi Kimura <yuyik46@gmail.com>",
   "type": "module",
   "main": "./dist/cli.js",
