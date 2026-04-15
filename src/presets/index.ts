@@ -1,10 +1,14 @@
-import type { DesignPreset, PresetDefinition } from "../types/index.js";
-import { notionPreset } from "./notion.js";
+import type { PresetDefinition } from "../types/index.js";
+import { notionPreset } from "./notion/index.js";
 
-export const presetRegistry = new Map<DesignPreset, PresetDefinition>([
+export const presetRegistry = new Map<string, PresetDefinition>([
   ["notion", notionPreset],
 ]);
 
-export function getPreset(id: DesignPreset): PresetDefinition | undefined {
+export function getPreset(id: string): PresetDefinition | undefined {
   return presetRegistry.get(id);
+}
+
+export function getAllPresets(): PresetDefinition[] {
+  return Array.from(presetRegistry.values());
 }

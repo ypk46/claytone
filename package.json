@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Design engine scaffolder for AI coding assistants.",
   "license": "ISC",
-  "author": "",
+  "author": "Yuyi Kimura <yuyik46@gmail.com>",
   "type": "module",
   "main": "./dist/cli.js",
   "bin": {

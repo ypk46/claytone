@@ -1,52 +1,58 @@
 import type { ProjectConfig } from "../types/index.js";
-import { getPreset } from "../presets/index.js";
-import { designTokensRule } from "../templates/rules/design-tokens.rule.js";
-import { componentNamingRule } from "../templates/rules/component-naming.rule.js";
-import { spacingLayoutRule } from "../templates/rules/spacing-layout.rule.js";
-import { designDecisionsMemory } from "../templates/memory/design-decisions.memory.js";
-import { preToolUseHook } from "../templates/hooks/pre-tool-use.hook.js";
-import { writeFile } from "../utils/fs.js";
+import { loadTemplate } from "../utils/load-template.js";
+import { interpolate } from "../utils/interpolate.js";
+import { writeFile, writeAndLog } from "../utils/fs.js";
 import { logCreated, logSkipped } from "../utils/logger.js";
 
-async function write(path: string, content: string): Promise<void> {
-  const written = await writeFile(path, content);
-  if (written) {
-    logCreated(path);
-  } else {
-    logSkipped(path);
-  }
+function withAugmentation(base: string, augmentation?: string): string {
+  return augmentation ? `${base}\n${augmentation}` : base;
 }
 
 export async function generateClaudeDir(config: ProjectConfig): Promise<void> {
-  const preset =
-    config.designPreset !== "none" ? getPreset(config.designPreset) : undefined;
+  const { ruleAugmentations } = config.preset;
 
-  await write(
+  await writeAndLog(
     ".claude/rules/design-tokens.md",
-    designTokensRule(config, preset?.ruleAugmentations["design-tokens"]),
+    withAugmentation(
+      loadTemplate("templates/rules/design-tokens.md"),
+      ruleAugmentations?.["design-tokens"],
+    ),
   );
-  await write(
+  await writeAndLog(
     ".claude/rules/component-naming.md",
-    componentNamingRule(config, preset?.ruleAugmentations["component-naming"]),
+    withAugmentation(
+      loadTemplate("templates/rules/component-naming.md"),
+      ruleAugmentations?.["component-naming"],
+    ),
   );
-  await write(
+  await writeAndLog(
     ".claude/rules/spacing-layout.md",
-    spacingLayoutRule(config, preset?.ruleAugmentations["spacing-layout"]),
+    withAugmentation(
+      loadTemplate("templates/rules/spacing-layout.md"),
+      ruleAugmentations?.["spacing-layout"],
+    ),
   );
 
   if (config.useMemoryFiles) {
-    await write(
-      ".claude/memory/design-decisions.md",
-      designDecisionsMemory(config),
+    const today = new Date().toISOString().slice(0, 10);
+    const content = interpolate(
+      loadTemplate("templates/memory/design-decisions.md"),
+      {
+        date: today,
+        presetLabel: config.preset.label,
+      },
     );
+    await writeAndLog(".claude/memory/design-decisions.md", content);
   }
 
   if (config.includeHooks) {
     const hookPath = ".claude/hooks/pre-tool-use.sh";
-    const written = await writeFile(hookPath, preToolUseHook(config));
+    const written = await writeFile(
+      hookPath,
+      loadTemplate("templates/hooks/pre-tool-use.sh"),
+    );
     if (written) {
       logCreated(hookPath);
-      // Make the hook executable
       const { chmod } = await import("node:fs/promises");
       await chmod(hookPath, 0o755);
     } else {
