@@ -1,7 +1,7 @@
-import type { ProjectConfig } from "../types/index.js";
-import { loadTemplate } from "../utils/load-template.js";
-import { interpolate } from "../utils/interpolate.js";
-import { writeAndLog } from "../utils/fs.js";
+import type { ProjectConfig } from '../types/index.js';
+import { loadTemplate } from '../utils/load-template.js';
+import { interpolate } from '../utils/interpolate.js';
+import { writeAndLog } from '../utils/fs.js';
 
 const MEMORY_SECTION = `
 ## Design Decisions
@@ -19,12 +19,12 @@ See \`.claude/hooks/\` for hook definitions.
 `;
 
 export async function generateClaudeMd(config: ProjectConfig): Promise<void> {
-  const template = loadTemplate("templates/claude-md.md");
+  const template = loadTemplate('templates/claude-md.md');
   const content = interpolate(template, {
     projectName: config.projectName,
     presetSection: config.preset.claudeMdSection,
-    memorySection: config.useMemoryFiles ? MEMORY_SECTION : "",
-    hooksSection: config.includeHooks ? HOOKS_SECTION : "",
+    memorySection: config.useMemoryFiles ? MEMORY_SECTION : '',
+    hooksSection: config.includeHooks ? HOOKS_SECTION : '',
   });
-  await writeAndLog("CLAUDE.md", content);
+  await writeAndLog('CLAUDE.md', content);
 }

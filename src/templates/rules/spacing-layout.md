@@ -10,12 +10,12 @@ All spacing values **must** derive from the design token spacing scale.
 
 ## Layout Primitives
 
-| Use case                | Approach                          |
-|-------------------------|-----------------------------------|
-| One-dimensional flow    | `display: flex`                   |
-| Two-dimensional grid    | `display: grid`                   |
-| Overlay / modal         | `position: absolute/fixed`        |
-| Sticky header/footer    | `position: sticky`                |
+| Use case             | Approach                   |
+| -------------------- | -------------------------- |
+| One-dimensional flow | `display: flex`            |
+| Two-dimensional grid | `display: grid`            |
+| Overlay / modal      | `position: absolute/fixed` |
+| Sticky header/footer | `position: sticky`         |
 
 - Avoid `position: absolute` outside of overlays, tooltips, and dropdowns
 - Avoid `position: relative` as a layout primitive — use flex/grid instead
