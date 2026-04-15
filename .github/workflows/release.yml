@@ -18,9 +18,16 @@ jobs:
           node-version: 24
           cache: npm
           registry-url: https://registry.npmjs.org
+
       - run: npm ci
+
+      # Creates the Version PR when changesets are present. Does not publish.
       - uses: changesets/action@v1
-        with:
-          publish: npm run release
+        if: "!startsWith(github.event.head_commit.message, 'Version Packages')"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Publishes only when the Version PR is merged (commit message starts with "Version Packages")
+      - name: Publish to npm
+        if: startsWith(github.event.head_commit.message, 'Version Packages')
+        run: npm run release
