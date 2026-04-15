@@ -1,0 +1,81 @@
+:root {
+  /* === Vercel Design System — claytone preset ===
+     Token values reflect Vercel's Geist design system. */
+
+  /* Colors — high-contrast monochrome with one accent */
+  --color-text-primary: #000000;
+  --color-text-secondary: #666666;
+  --color-text-tertiary: #999999;
+  --color-background: #ffffff;
+  --color-background-secondary: #f6f6f6;
+  --color-background-tertiary: #eaeaea;
+  --color-border: #eaeaea;
+  --color-border-strong: #999999;
+  --color-accent: #0070f3;
+  --color-accent-bg: #e6f0ff;
+  --color-destructive: #ee0000;
+  --color-destructive-bg: #ffe6e6;
+  --color-success: #50e3c2;
+  --color-success-bg: #e6faf6;
+
+  /* Typography — Geist only */
+  --font-sans: "Geist", "Inter", sans-serif;
+  --font-mono: "Geist Mono", "SFMono-Regular", "Consolas", monospace;
+
+  /* Type scale */
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-h3: 24px;
+  --text-h2: 32px;
+  --text-h1: 48px;
+
+  /* Line heights */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+
+  /* Font weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing — 8px base grid, px units */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-10: 80px;
+  --space-12: 96px;
+  --space-16: 128px;
+
+  /* Border radius — tight and deliberate */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 999px;
+
+  /* Shadows — crisp, minimal */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+
+  /* Z-index layers */
+  --z-base: 0;
+  --z-overlay: 100;
+  --z-modal: 200;
+  --z-toast: 300;
+  --z-tooltip: 400;
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 960px;
+  --breakpoint-lg: 1200px;
+}
