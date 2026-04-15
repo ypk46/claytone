@@ -58,9 +58,10 @@ claytone init --yes
 
 Each preset encodes a real, tested design system as Claude Code guardrails — tokens, rules, and philosophy all in one.
 
-| Preset     | Description                                                       |
-| ---------- | ----------------------------------------------------------------- |
-| **Notion** | Inter type, warm near-black palette, 4px grid, minimal decoration |
+| Preset     | Description                                                         |
+| ---------- | ------------------------------------------------------------------- |
+| **Notion** | Inter type, warm near-black palette, 4px grid, minimal decoration   |
+| **Vercel** | Geist type, high-contrast monochrome, 8px grid, technical precision |
 
 ## Development
 
@@ -95,8 +96,8 @@ src/
 │   ├── rules/                # Base rule files (static markdown)
 │   ├── memory/               # Design decisions log template
 │   └── hooks/                # Hook stub
-├── presets/                  # One directory per preset
-│   └── notion/
+├── presets/                  # One directory per preset (notion, vercel, …)
+│   └── <name>/
 │       ├── index.ts          # Assembles PresetDefinition from files
 │       ├── tokens.css        # CSS custom properties
 │       ├── claude-md-section.md
