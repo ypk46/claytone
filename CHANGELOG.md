@@ -1,5 +1,12 @@
 # claytone
 
+## 0.3.1
+
+### Patch Changes
+
+- c872519: Fix CLI version to be read from package.json instead of being hardcoded.
+- 1622064: Update README with badges (npm version, downloads, CI status) add Linear to the presets table.
+
 ## 0.3.0
 
 ### Minor Changes
