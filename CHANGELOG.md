@@ -1,5 +1,15 @@
 # claytone
 
+## 0.3.0
+
+### Minor Changes
+
+- 6d94f7b: Add Linear design preset
+
+### Patch Changes
+
+- f872bba: Add examples to showcase design guardrails
+
 ## 0.2.0
 
 ### Minor Changes
