@@ -1,6 +1,6 @@
 {
   "name": "claytone",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Design engine scaffolder for AI coding assistants.",
   "license": "MIT",
   "author": "Yuyi Kimura <yuyik46@gmail.com>",
