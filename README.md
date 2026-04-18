@@ -1,5 +1,9 @@
 # Claytone
 
+[![npm version](https://img.shields.io/npm/v/claytone)](https://www.npmjs.com/package/claytone)
+[![npm downloads](https://img.shields.io/npm/dm/claytone)](https://www.npmjs.com/package/claytone)
+[![CI](https://github.com/ypk46/claytone/actions/workflows/ci.yml/badge.svg)](https://github.com/ypk46/claytone/actions/workflows/ci.yml)
+
 A CLI that scaffolds a design engine for AI coding assistants. Run it in any project to generate a structured [Claude Code](https://claude.ai/code) configuration that teaches Claude how to work within your design system.
 
 ## What it generates
@@ -58,10 +62,11 @@ claytone init --yes
 
 Each preset encodes a real, tested design system as Claude Code guardrails — tokens, rules, and philosophy all in one.
 
-| Preset     | Description                                                         |
-| ---------- | ------------------------------------------------------------------- |
-| **Notion** | Inter type, warm near-black palette, 4px grid, minimal decoration   |
-| **Vercel** | Geist type, high-contrast monochrome, 8px grid, technical precision |
+| Preset     | Description                                                               |
+| ---------- | ------------------------------------------------------------------------- |
+| **Linear** | Inter type, dark surfaces, indigo-purple accent, 4px grid, sidebar-driven |
+| **Notion** | Inter type, warm near-black palette, 4px grid, minimal decoration         |
+| **Vercel** | Geist type, high-contrast monochrome, 8px grid, technical precision       |
 
 ## Development
 
